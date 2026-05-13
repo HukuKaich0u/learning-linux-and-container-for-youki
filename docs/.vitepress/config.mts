@@ -3,7 +3,10 @@ import { defineConfig } from "vitepress";
 const courseSidebar = [
   {
     text: "はじめに",
-    items: [{ text: "教材トップ", link: "/container-internals/" }]
+    items: [
+      { text: "教材トップ", link: "/container-internals/" },
+      { text: "用語ガイド", link: "/container-internals/glossary" }
+    ]
   },
   {
     text: "本編",

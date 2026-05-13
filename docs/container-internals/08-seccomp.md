@@ -22,6 +22,14 @@ capability は root 権限を細かく分けました。
 seccomp = 使える syscall を制限する
 :::
 
+## この章で先に意味を押さえる単語
+
+- `syscall`: process が kernel に仕事を頼む入口
+- `seccomp`: 使える syscall を制限する仕組み
+- `filter`: 許可・拒否ルール
+- `seccomp profile`: syscall ルールをまとめた設定
+- `attack surface`: 攻撃に利用され得る入口の広さ
+
 ## なぜ seccomp が必要なのか
 
 process はカーネルに仕事を頼むとき、syscall を使います。  

@@ -18,6 +18,14 @@ process を理解したら、次に必要なのは「その process がどうや
 
 答えは、`syscall` を呼ぶことです。
 
+## この章で先に意味を押さえる単語
+
+- `user space`: アプリケーションが動く側の世界
+- `kernel space`: Linux カーネルが動く側の世界
+- `syscall`: user space から kernel へ仕事を依頼する入口
+- `clone`: process や thread を作るのに使う syscall
+- `execve`: 現在の process を別プログラムに切り替える syscall
+
 ## なぜ syscall を学ぶのか
 
 コンテナの低レイヤーを理解するとき、`namespace を作る`, `mount を設定する`, `process を exec する` という表現が何度も出てきます。

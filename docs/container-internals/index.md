@@ -3,8 +3,8 @@ title: Linux コンテナの仕組み
 outline: [2, 3]
 prev: false
 next:
-  text: "第1章: コンテナの正体を先に掴む"
-  link: /container-internals/01-overview
+  text: "用語ガイド"
+  link: /container-internals/glossary
 ---
 
 # Linux コンテナの仕組み
@@ -46,10 +46,11 @@ Docker を使ったことはあるが中身は曖昧、という読者向けに�
 
 ## 読み方
 
-1. 第1章で全体像を掴む
-2. 第2章から第9章で仕組みごとに理解する
-3. 第10章で対応関係を整理する
-4. 確認問題とミニプロジェクトで定着させる
+1. まず [用語ガイド](/container-internals/glossary) で単語の土台を作る
+2. 第1章で全体像を掴む
+3. 第2章から第9章で仕組みごとに理解する
+4. 第10章で対応関係を整理する
+5. 確認問題とミニプロジェクトで定着させる
 
 ## 前提環境
 
@@ -59,6 +60,7 @@ Docker を使ったことはあるが中身は曖昧、という読者向けに�
 
 ## 章構成
 
+- [用語ガイド](/container-internals/glossary)
 - [第1章: コンテナの正体を先に掴む](/container-internals/01-overview)
 - [第2章: process と /proc](/container-internals/02-process-and-proc)
 - [第3章: syscall と user space / kernel space](/container-internals/03-syscall-and-kernel)
@@ -94,6 +96,7 @@ flowchart LR
 ## このページで理解すべきこと
 
 - 教材全体の範囲
+- 先に用語ガイドを読むと理解しやすいこと
 - 読む順番
 - 学習ゴール
 - 実験前提の Ubuntu 環境

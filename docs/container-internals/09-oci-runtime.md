@@ -26,6 +26,15 @@ next:
 
 その主役が `OCI runtime` です。
 
+## この章で先に意味を押さえる単語
+
+- `OCI`: Open Container Initiative。コンテナの標準仕様を定める取り組み
+- `runtime`: 実際に process を起動・設定する実行役
+- `OCI runtime`: Linux 機能を組み合わせてコンテナ process を起動する runtime
+- `bundle`: `config.json` と `rootfs` を含む runtime 入力ディレクトリ
+- `containerd`: Docker と runtime の間でコンテナ管理を担う中間レイヤー
+- `pod`: Kubernetes で 1 つ以上のコンテナをまとめる単位。この教材の中心は container であり pod ではない
+
 ## Docker が全部やっているわけではない
 
 Docker を使っていると、つい「Docker がコンテナを作っている」と思いがちです。  

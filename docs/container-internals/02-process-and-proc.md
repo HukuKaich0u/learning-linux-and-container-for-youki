@@ -16,6 +16,14 @@ next:
 
 この章では、Linux における process の基本と、それを観察する窓口である `/proc` を学びます。
 
+## この章で先に意味を押さえる単語
+
+- `program`: ディスク上にある実行ファイルやコード
+- `process`: 実行中の program
+- `PID`: Process ID。process の識別番号
+- `PPID`: Parent Process ID。親 process の PID
+- `procfs`: `/proc` のこと。process やカーネル状態を見せる仮想ファイルシステム
+
 ## なぜ process を最初に学ぶのか
 
 Docker を使っていると、つい「コンテナ」という単位で考えがちです。

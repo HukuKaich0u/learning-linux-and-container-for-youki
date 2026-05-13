@@ -31,6 +31,14 @@ Linux の root は非常に強力です。
 capability = root 権限を細かく分ける
 :::
 
+## この章で先に意味を押さえる単語
+
+- `root ユーザー`: Linux の強い管理者権限を持つユーザー
+- `privilege`: 何ができるかを決める権限
+- `capability`: root 権限を小さな能力へ分割したもの
+- `CAP_SYS_ADMIN`: 非常に広く強い capability
+- `CAP_NET_ADMIN`: ネットワーク設定に関わる capability
+
 ## なぜ capability が必要なのか
 
 昔ながらの UNIX 的な発想では、権限は大ざっぱに次の 2 択でした。

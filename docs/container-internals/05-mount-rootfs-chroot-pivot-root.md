@@ -22,6 +22,15 @@ rootfs = 見える `/` の中身
 mount = ファイルシステムを特定の場所に接続する
 :::
 
+## この章で先に意味を押さえる単語
+
+- `filesystem`: ファイルやディレクトリを保存・管理する仕組み
+- `mount`: filesystem やディレクトリをある場所に接続すること
+- `rootfs`: process に見せる `/` の中身一式
+- `bind mount`: 既存ディレクトリを別の場所にも見せる mount
+- `chroot`: process から見た root directory を変える仕組み
+- `pivot_root`: rootfs を本格的に切り替える仕組み
+
 そして、`chroot` や `pivot_root` は「その process がどの `/` を根として見るか」を扱うための関連技法です。
 
 ## なぜこの章が重要なのか

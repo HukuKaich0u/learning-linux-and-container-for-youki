@@ -22,6 +22,15 @@ namespace を理解すると「見える世界が分かれる」ことは分か�
 cgroup = 使える資源を制限・計測する
 :::
 
+## この章で先に意味を押さえる単語
+
+- `cgroup`: process 群の資源制御を行う仕組み
+- `resource`: CPU, memory, pids, io など process が使う資源
+- `controller`: cgroup で特定資源を制御する機能単位
+- `cgroup v2`: 統一階層の現代的 cgroup
+- `sysfs`: `/sys` のこと。cgroup を含むカーネルサブシステム情報を見せる
+- `systemd`: service や session を cgroup と結び付けて管理する init system
+
 ## なぜ cgroup が必要なのか
 
 たとえば 1 台のサーバで:

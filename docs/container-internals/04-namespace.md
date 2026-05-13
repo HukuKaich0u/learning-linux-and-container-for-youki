@@ -20,6 +20,17 @@ next:
 namespace = 見える世界を分ける
 :::
 
+## この章で先に意味を押さえる単語
+
+- `namespace`: process から見える世界を分離する仕組み
+- `PID namespace`: 見える process 一覧と PID の見え方を分ける
+- `mount namespace`: 見える mount 構成を分ける
+- `network namespace`: 見える NIC, IP, routing を分ける
+- `UTS namespace`: hostname の見え方を分ける
+- `IPC namespace`: process 間通信資源の見え方を分ける
+- `user namespace`: UID, GID, 権限の見え方を分ける
+- `cgroup namespace`: 見える cgroup パスを分ける
+
 ## なぜ namespace が必要なのか
 
 もし何の分離もなければ、1 台の Linux 上で動くすべての process は、ほぼ同じ世界を見ます。
