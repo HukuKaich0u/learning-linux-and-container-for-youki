@@ -293,8 +293,8 @@ CapEff: 0000000000000000
 ### 実行コマンド
 
 ```bash
-docker run --rm ubuntu bash -lc 'ip link'
-docker run --rm ubuntu bash -lc 'ip link set lo down'
+docker run --rm debian:bookworm-slim bash -lc 'apt-get update >/dev/null && apt-get install -y iproute2 >/dev/null && ip link'
+docker run --rm debian:bookworm-slim bash -lc 'apt-get update >/dev/null && apt-get install -y iproute2 >/dev/null && ip link set lo down'
 ```
 
 ### 期待される出力の例
@@ -315,7 +315,8 @@ RTNETLINK answers: Operation not permitted
 
 ### 注意点
 
-- `ip` コマンドが入っていないイメージもあるため、必要に応じて `iproute2` を入れる
+- `ip` コマンドが入っていないイメージが多いため、この例ではその場で `iproute2` を入れている
+- パッケージ取得のためネットワーク接続が必要
 
 ## よくある誤解
 

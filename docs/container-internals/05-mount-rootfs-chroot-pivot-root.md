@@ -290,6 +290,7 @@ mount namespace を分けると、その中だけで別の mount 構成を作れ
 mkdir -p /tmp/mnt-demo/source /tmp/mnt-demo/target
 echo hello >/tmp/mnt-demo/source/hello.txt
 sudo unshare --mount bash
+mount --make-rprivate /
 mount --bind /tmp/mnt-demo/source /tmp/mnt-demo/target
 ls /tmp/mnt-demo/target
 cat /tmp/mnt-demo/target/hello.txt
@@ -323,7 +324,8 @@ hello
 ### 注意点
 
 - 実験後に shell を抜けること
-- `/tmp` 配下で完結する安全な実験にしている
+- `mount --make-rprivate /` を先に実行し、mount 変更の伝播を止めてから実験すること
+- `/tmp` 配下で完結する安全寄りの実験だが、`sudo` 付き mount 操作なので手順は省略しないこと
 
 ## 実験: `chroot` の感覚を安全に体験する
 

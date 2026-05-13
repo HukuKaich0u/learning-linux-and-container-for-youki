@@ -28,7 +28,7 @@ cgroup = 使える資源を制限・計測する
 - `resource`: CPU, memory, pids, io など process が使う資源
 - `controller`: cgroup で特定資源を制御する機能単位
 - `cgroup v2`: 統一階層の現代的 cgroup
-- `sysfs`: `/sys` のこと。cgroup を含むカーネルサブシステム情報を見せる
+- `sysfs`: `/sys` の多くを構成する仮想ファイルシステム。デバイスやカーネルサブシステム情報を見せる
 - `systemd`: service や session を cgroup と結び付けて管理する init system
 
 ## なぜ cgroup が必要なのか
@@ -162,14 +162,15 @@ flowchart TD
 第2章で `/proc` を見ました。  
 同じように、cgroup の観察窓口として重要なのが `/sys/fs/cgroup` です。
 
-これは `sysfs` を通じて見える cgroup 関連のファイル群です。
+ここは cgroup v2 環境では、通常 `cgroup2` filesystem の mount point です。
 
 ここで `sysfs` にも触れておきます。
 
 - `/proc`: process やカーネル状態の観察窓口
-- `/sys`: デバイス、カーネルサブシステム、cgroup などの観察窓口
+- `/sys`: デバイスやカーネルサブシステムの観察窓口
+- `/sys/fs/cgroup`: cgroup を観察・設定するための cgroup filesystem の mount point
 
-つまり `procfs` と `sysfs` は、どちらも Linux 内部状態をファイルとして見せる仕組みですが、対象が少し違います。
+つまり `procfs` と `sysfs` は、どちらも Linux 内部状態をファイルとして見せる仕組みですが、cgroup 自体は通常 `cgroup2` filesystem として別に mount されています。
 
 ## `cat /proc/self/cgroup` は何を示すか
 
