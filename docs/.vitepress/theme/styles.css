@@ -1,0 +1,20 @@
+.mermaid-diagram {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  padding: 1rem;
+}
+
+.mermaid-diagram svg {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.mermaid-diagram__error {
+  margin-bottom: 0.75rem;
+  color: var(--vp-c-danger-1);
+  font-size: 0.9rem;
+}
