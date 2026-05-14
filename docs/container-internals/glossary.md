@@ -180,6 +180,21 @@ process やカーネル状態を見せる仮想ファイルシステムです。
 
 ## コンテナ実装周辺
 
+### Docker
+
+container 技術を扱いやすくする代表的な利用者向けツール群です。  
+container 技術そのものと同義ではありません。
+
+### `dockerd`
+
+Docker の daemon です。  
+利用者からの要求を受けて、下のレイヤーへ処理を渡します。
+
+### `containerd`
+
+container を管理する中間レイヤーです。  
+Docker や Kubernetes 文脈でよく登場します。
+
 ### container image
 
 コンテナの rootfs を作る元になるファイルレイヤー群です。
@@ -200,6 +215,15 @@ OCI runtime の有名な実装です。
 ### `youki`
 
 Rust で書かれた OCI runtime 実装です。
+
+### `CRI`
+
+Container Runtime Interface の略です。  
+Kubernetes が runtime 管理レイヤーを呼ぶためのインターフェースです。
+
+### `CRI-O`
+
+Kubernetes 文脈で使われる container 管理レイヤー実装の 1 つです。
 
 ### OCI bundle
 
@@ -235,4 +259,4 @@ Kubernetes で、1 つ以上のコンテナをまとめて扱う単位です。
 
 - 本文に出る主要単語の最低限の意味
 - `PID`, `root`, `rootfs`, `namespace`, `cgroup`, `capability`, `seccomp` の違い
-- `container` と `VM` と `pod` を混同しないこと
+- `container`, `Docker`, `OCI runtime`, `CRI`, `VM`, `pod` を混同しないこと

@@ -83,9 +83,9 @@ Linux では大きく 2 つの世界を区別して考えます。
 
 ```mermaid
 flowchart TD
-  A[User space<br>bash / python / docker / runc]
+  A["User space<br/>bash<br/>python<br/>docker<br/>runc"]
   B[syscall]
-  C[Kernel space<br>process管理 / mount / network / memory]
+  C["Kernel space<br/>process管理<br/>mount<br/>network<br/>memory"]
   A --> B --> C
 ```
 

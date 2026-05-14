@@ -3,13 +3,13 @@ title: Linux コンテナの仕組み
 outline: [2, 3]
 prev: false
 next:
-  text: "用語ガイド"
-  link: /container-internals/glossary
+  text: "第0章: コンテナ技術の全体像"
+  link: /container-internals/00-container-technology-overview
 ---
 
 # Linux コンテナの仕組み
 
-Docker を使ったことはあるが中身は曖昧、という読者向けに、Linux の仕組みからコンテナを理解する教材です。
+Docker を使ったことはあるが中身は曖昧、という読者向けに、container 技術全体の見取り図と、その土台になる Linux の仕組みをつなげて理解する教材です。
 
 ## 注意
 
@@ -17,6 +17,10 @@ Docker を使ったことはあるが中身は曖昧、という読者向けに�
 
 ## この教材で扱うこと
 
+- container 技術の全体像
+- container 技術が必要になった背景と、何を解決するのか
+- Docker / containerd / CRI-O / OCI runtime の役割の違い
+- CRI と OCI の違い
 - process
 - syscall
 - user space / kernel space
@@ -40,21 +44,25 @@ Docker を使ったことはあるが中身は曖昧、という読者向けに�
 - プログラミング経験はある
 - Docker は触ったことがある
 - OCI runtime や `runc` / `youki` に興味がある
+- Kubernetes や CRI の位置づけも整理したい
 
 ## 学習ゴール
 
+- container 技術全体の中で Docker や OCI runtime がどの位置にいるかを説明できる
+- container 技術がなぜ必要になったか、何ができるかを説明できる
 - コンテナは VM ではなく、Linux の機能で隔離されたプロセスだと説明できる
 - namespace が見える世界を分ける仕組みだと説明できる
 - cgroup が使える資源を制限・計測する仕組みだと説明できる
-- Docker / OCI runtime が Linux 機能をどう組み合わせるかを説明できる
+- OCI runtime が Linux 機能をどう組み合わせるかを説明できる
 
 ## 読み方
 
-1. 基本は第1章から順に読み進める
-2. 単語で引っかかったら [用語ガイド](/container-internals/glossary) をその都度引く
-3. 第2章から第9章で仕組みごとに理解する
-4. 第10章で対応関係を整理する
-5. 確認問題とミニプロジェクトで定着させる
+1. まず [第0章: コンテナ技術の全体像](/container-internals/00-container-technology-overview) で地図をつかむ
+2. 第1章から第8章で Linux 側の根幹を理解する
+3. 単語で引っかかったら [用語ガイド](/container-internals/glossary) をその都度引く
+4. 第9章で OCI runtime 層を整理する
+5. 第10章で全体の対応関係をまとめる
+6. 確認問題とミニプロジェクトで定着させる
 
 Linux 自体にまだほとんど触れていない場合は、最初に用語ガイドへざっと目を通してから本文に入っても構いません。
 
@@ -66,6 +74,7 @@ Linux 自体にまだほとんど触れていない場合は、最初に用語�
 
 ## 章構成
 
+- [第0章: コンテナ技術の全体像](/container-internals/00-container-technology-overview)
 - [用語ガイド](/container-internals/glossary)
 - [第1章: コンテナの正体を先に掴む](/container-internals/01-overview)
 - [第2章: process と /proc](/container-internals/02-process-and-proc)
@@ -87,20 +96,22 @@ Mermaid で簡易図を置けるようにしてあります。
 
 ```mermaid
 flowchart LR
-  A[Docker run] --> B[OCI runtime]
-  B --> C[namespace]
-  B --> D[cgroup]
-  B --> E[rootfs and mount]
-  B --> F[capability and seccomp]
-  C --> G[隔離されたプロセス]
-  D --> G
-  E --> G
-  F --> G
+  A["利用者向けツール<br/>Docker<br/>Podman<br/>kubectl"] --> B["管理レイヤー<br/>containerd<br/>CRI-O"]
+  B --> C[OCI runtime]
+  C --> D[namespace]
+  C --> E[cgroup]
+  C --> F[rootfs and mount]
+  C --> G[capability and seccomp]
+  D --> H[隔離されたプロセス]
+  E --> H
+  F --> H
+  G --> H
 ```
 
 ## このページで理解すべきこと
 
 - 教材全体の範囲
+- container 技術の全体像から Linux の話へ降りていく流れ
 - 用語ガイドは必要に応じて参照すればよいこと
 - 読む順番
 - 学習ゴール

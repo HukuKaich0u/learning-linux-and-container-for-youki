@@ -11,6 +11,8 @@ next:
 
 # 第9章: OCI runtime / runc / youki
 
+第0章では、container 技術全体の中で Docker、containerd、CRI-O、OCI runtime、Linux 機能がどう並ぶかを俯瞰しました。
+
 ここまでで、コンテナを構成する Linux の部品を一通り見てきました。
 
 - process
@@ -22,7 +24,7 @@ next:
 - capability
 - seccomp
 
-この章では、これらの部品を「誰が組み合わせてコンテナを起動しているのか」を整理します。
+この章では、その全体像のうち「誰が Linux の部品を組み合わせてコンテナ process を起動しているのか」を整理します。
 
 その主役が `OCI runtime` です。
 
@@ -33,6 +35,7 @@ next:
 - `OCI runtime`: Linux 機能を組み合わせてコンテナ process を起動する runtime
 - `bundle`: `config.json` と `rootfs` を含む runtime 入力ディレクトリ
 - `containerd`: Docker と runtime の間でコンテナ管理を担う中間レイヤー
+- `CRI`: Kubernetes が runtime 管理レイヤーを呼ぶためのインターフェース
 - `pod`: Kubernetes で 1 つ以上のコンテナをまとめる単位。この教材の中心は container であり pod ではない
 
 ## Docker が全部やっているわけではない
@@ -49,6 +52,9 @@ Docker を使っていると、つい「Docker がコンテナを作っている
 - OCI runtime: 実際に Linux 機能を使って process を起動する低レイヤー
 
 という役割分担になります。
+
+Docker 以外でも考え方は同じです。  
+Kubernetes では `CRI` を通じて `containerd` や `CRI-O` のような管理レイヤーに依頼し、その先で `OCI runtime` が Linux 機能を呼び出します。
 
 ## OCI とは何か
 
@@ -228,12 +234,24 @@ flowchart TD
   A[docker CLI]
   B[dockerd]
   C[containerd]
-  D[OCI runtime<br>runc / youki]
-  E[Linux kernel features]
+  D["OCI runtime<br/>runc<br/>youki"]
+  E["Linux kernel<br/>features"]
   A --> B --> C --> D --> E
 ```
 
 ここで大切なのは、低レイヤーに降りるほど「Linux 機能の組み合わせ」に近づくことです。
+
+Kubernetes 文脈では、さらに手前に `CRI` が入ります。
+
+```mermaid
+flowchart TD
+  A[kubelet]
+  B[CRI]
+  C["containerd<br/>CRI-O"]
+  D["OCI runtime<br/>runc<br/>youki"]
+  E["Linux kernel<br/>features"]
+  A --> B --> C --> D --> E
+```
 
 ## `runc` / `youki` を読むと何が分かるのか
 

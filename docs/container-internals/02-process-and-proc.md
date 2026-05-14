@@ -276,7 +276,7 @@ flowchart LR
   A[ホスト Linux]
   B[通常の process]
   C[コンテナ process]
-  D[/proc/<pid>]
+  D["/proc/&lt;pid&gt;"]
   A --> B
   A --> C
   C --> D

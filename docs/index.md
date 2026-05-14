@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Linux Container Learning"
   text: "Linux コンテナの仕組みを学ぶ教材"
-  tagline: "Docker の裏側を、Linux の基本機能から理解する"
+  tagline: "コンテナ技術の全体像と、Linux の基本機能をつなげて理解する"
   actions:
     - theme: brand
       text: 教材トップを見る
@@ -19,14 +19,15 @@ hero:
 
 ## 何を解説しているか
 
-Docker の裏側で使われている `process`、`namespace`、`cgroup`、`rootfs`、`capability`、`seccomp`、OCI runtime の役割を、Linux の仕組みから順に解説します。
+container 技術全体の見取り図を先に押さえたうえで、`process`、`namespace`、`cgroup`、`rootfs`、`capability`、`seccomp`、OCI runtime の役割を、Linux の仕組みから順に解説します。
 
 ## ターゲット
 
-Docker を触ったことはあるが、コンテナの中身はまだ曖昧な初学者を想定しています。
+Docker を触ったことはあるが、container 技術全体の構図や Linux 側の仕組みはまだ曖昧な初学者を想定しています。
 
 ## 章
 
+- 第0章: コンテナ技術の全体像
 - 用語ガイド
 - 第1章: コンテナの正体を先に掴む
 - 第2章: process と `/proc`

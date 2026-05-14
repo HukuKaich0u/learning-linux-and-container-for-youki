@@ -11,6 +11,11 @@
   display: block;
   margin: 0 auto;
   max-width: 100%;
+  height: auto;
+}
+
+.mermaid-diagram svg text {
+  text-rendering: geometricPrecision;
 }
 
 .mermaid-diagram__error {

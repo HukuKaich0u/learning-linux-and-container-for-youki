@@ -11,6 +11,7 @@ const courseSidebar = [
   {
     text: "本編",
     items: [
+      { text: "第0章: コンテナ技術の全体像", link: "/container-internals/00-container-technology-overview" },
       { text: "第1章: コンテナの正体を先に掴む", link: "/container-internals/01-overview" },
       { text: "第2章: process と /proc", link: "/container-internals/02-process-and-proc" },
       { text: "第3章: syscall と user space / kernel space", link: "/container-internals/03-syscall-and-kernel" },

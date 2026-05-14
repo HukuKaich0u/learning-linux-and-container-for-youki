@@ -2,8 +2,8 @@
 title: "第1章: コンテナの正体を先に掴む"
 outline: [2, 3]
 prev:
-  text: 教材トップ
-  link: /container-internals/
+  text: "第0章: コンテナ技術の全体像"
+  link: /container-internals/00-container-technology-overview
 next:
   text: "第2章: process と /proc"
   link: /container-internals/02-process-and-proc
@@ -11,14 +11,16 @@ next:
 
 # 第1章: コンテナの正体を先に掴む
 
-この教材の最初のポイントは、とてもシンプルです。
+前のページでは、container 技術全体の中で Docker、管理レイヤー、OCI runtime、Linux 機能がどう並ぶかを見ました。
+
+この章からは、その地図のいちばん下にある「Linux 側の根幹」に視点を移します。
 
 ::: tip 最初に一言で言うと
 コンテナは、Linux の上で動く「隔離されたプロセス」です。  
 VM のように別の OS カーネルを起動しているわけではありません。
 :::
 
-Docker を使っていると、コンテナは小さな仮想マシンのように見えます。`docker run ubuntu bash` と打つと、まるで別マシンの中に入ったように見えるからです。
+利用者からは container は小さな仮想マシンのように見えることがあります。
 
 しかし実際には、その正体は Linux の process です。ただし普通の process ではなく、以下の仕組みで見える世界と使える権限が絞られています。
 
@@ -29,7 +31,7 @@ Docker を使っていると、コンテナは小さな仮想マシンのよう�
 - `capability`: root 権限を細かく分ける
 - `seccomp`: 使える syscall を制限する
 
-この章では、細かい定義に入る前に、まず全体像をつかみます。
+この章では、細かい定義に入る前に、container の正体を Linux の言葉でつかみます。
 
 ## この章で先に意味を押さえる単語
 
@@ -155,11 +157,11 @@ docker run --rm -it ubuntu bash
 ```mermaid
 flowchart LR
   A[コンテナ process]
-  B[namespace<br>見える世界を分ける]
-  C[cgroup<br>使える資源を制限する]
-  D[rootfs and mount<br>見える / を作る]
-  E[capability<br>root 権限を細かく分ける]
-  F[seccomp<br>使える syscall を制限する]
+  B["namespace<br/>見える世界を分ける"]
+  C["cgroup<br/>使える資源を制限する"]
+  D["rootfs / mount<br/>見える / を作る"]
+  E["capability<br/>root 権限を細かく分ける"]
+  F["seccomp<br/>使える syscall を制限する"]
   A --> B
   A --> C
   A --> D
@@ -208,46 +210,18 @@ Linux の `root` は本来とても強力です。
 `seccomp` は、使ってよい syscall を絞る仕組みです。  
 namespace や cgroup が「世界」や「資源」を制御するのに対して、seccomp は「何ができるか」を syscall 単位で制御します。
 
-## Docker run の裏側を超ざっくり見る
+## この章の位置づけ
 
-利用者が次のコマンドを実行したとします。
+container 技術全体のレイヤー構造や Docker などの具体例は、前のページで先に見ました。  
+ここから先は、その土台になっている Linux の機能を 1 つずつ理解していきます。
 
-```bash
-docker run --rm -it ubuntu bash
-```
+つまり流れとしては:
 
-内部では概ね次のような流れが起きます。
+- 第0章: container 技術全体の地図を見る
+- 第1章から第8章: Linux 側の根幹を理解する
+- 第9章: それらを組み合わせる OCI runtime 層を詳しく見る
 
-```mermaid
-flowchart TD
-  A[docker run]
-  B[Docker daemon / containerd]
-  C[OCI runtime を呼ぶ]
-  D[rootfs を用意]
-  E[namespace 作成]
-  F[cgroup 設定]
-  G[mount 設定]
-  H[capability / seccomp 設定]
-  I[bash を exec]
-  A --> B --> C --> D --> E --> F --> G --> H --> I
-```
-
-ポイントは、Docker 自身が魔法でコンテナを作っているわけではないことです。
-
-実際には低レイヤーで:
-
-- rootfs を準備し
-- namespace を作り
-- cgroup を設定し
-- mount を組み
-- capability を落とし
-- seccomp を設定し
-- 最後に process を `exec` している
-
-だけです。
-
-もちろん「だけ」と言っても、実装は十分複雑です。  
-しかし考え方としては、「コンテナ専用の新しい OS 機能」ではなく、「Linux に元からある機能の組み合わせ」と捉えるのが重要です。
+という構成です。
 
 ## たとえ話で整理する
 
