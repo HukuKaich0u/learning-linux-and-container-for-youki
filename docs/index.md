@@ -13,6 +13,10 @@ hero:
 
 # Linux コンテナの仕組み
 
+## 注意
+
+これは主に作者自身の学習のために作っている教材です。内容の正確性を保証するものではないため、学習の参考資料のひとつとして使ってください。
+
 ## 何を解説しているか
 
 Docker の裏側で使われている `process`、`namespace`、`cgroup`、`rootfs`、`capability`、`seccomp`、OCI runtime の役割を、Linux の仕組みから順に解説します。
