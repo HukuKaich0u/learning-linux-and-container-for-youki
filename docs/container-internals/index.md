@@ -46,11 +46,13 @@ Docker を使ったことはあるが中身は曖昧、という読者向けに�
 
 ## 読み方
 
-1. まず [用語ガイド](/container-internals/glossary) で単語の土台を作る
-2. 第1章で全体像を掴む
+1. 基本は第1章から順に読み進める
+2. 単語で引っかかったら [用語ガイド](/container-internals/glossary) をその都度引く
 3. 第2章から第9章で仕組みごとに理解する
 4. 第10章で対応関係を整理する
 5. 確認問題とミニプロジェクトで定着させる
+
+Linux 自体にまだほとんど触れていない場合は、最初に用語ガイドへざっと目を通してから本文に入っても構いません。
 
 ## 前提環境
 
@@ -72,7 +74,6 @@ Docker を使ったことはあるが中身は曖昧、という読者向けに�
 - [第9章: OCI runtime / runc / youki](/container-internals/09-oci-runtime)
 - [第10章: 全体まとめ](/container-internals/10-summary)
 - [確認問題](/container-internals/questions)
-- [解答と解説](/container-internals/answers)
 - [ミニプロジェクト](/container-internals/mini-project)
 - [次に読む資料](/container-internals/next-steps)
 
@@ -96,7 +97,7 @@ flowchart LR
 ## このページで理解すべきこと
 
 - 教材全体の範囲
-- 先に用語ガイドを読むと理解しやすいこと
+- 用語ガイドは必要に応じて参照すればよいこと
 - 読む順番
 - 学習ゴール
 - 実験前提の Ubuntu 環境

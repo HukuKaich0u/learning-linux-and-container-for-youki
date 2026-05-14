@@ -3,29 +3,38 @@ layout: home
 
 hero:
   name: "Linux Container Learning"
-  text: "Linux とコンテナの仕組みを学ぶ教材サイト"
-  tagline: "Docker の裏側を、process・namespace・cgroup・rootfs から理解する"
+  text: "Linux コンテナの仕組みを学ぶ教材"
+  tagline: "Docker の裏側を、Linux の基本機能から理解する"
   actions:
     - theme: brand
-      text: 教材を読む
+      text: 教材トップを見る
       link: /container-internals/
-    - theme: alt
-      text: GitHub ではなくローカルで読む
-      link: /container-internals/01-overview
-
-features:
-  - title: Linux の仕組みから理解
-    details: process、syscall、namespace、cgroup など、コンテナ理解に必要な Linux 機能へ段階的につなげます。
-  - title: 初学者向けの講義構成
-    details: 章ごとに分けた教材、実験パート、確認問題、ミニプロジェクトの流れで学べます。
-  - title: Ubuntu で手を動かせる
-    details: Docker の表面的な使い方ではなく、Linux 上で観察しながら理解できる構成を前提にしています。
 ---
 
-# 学習サイト
+# Linux コンテナの仕組み
 
-このサイトは、Linux・コンテナ技術・OS 基礎を学ぶための教材置き場です。
+## 何を解説しているか
 
-## 教材一覧
+Docker の裏側で使われている `process`、`namespace`、`cgroup`、`rootfs`、`capability`、`seccomp`、OCI runtime の役割を、Linux の仕組みから順に解説します。
 
-- [Linux コンテナの仕組み](/container-internals/)
+## ターゲット
+
+Docker を触ったことはあるが、コンテナの中身はまだ曖昧な初学者を想定しています。
+
+## 章
+
+- 用語ガイド
+- 第1章: コンテナの正体を先に掴む
+- 第2章: process と `/proc`
+- 第3章: syscall と user space / kernel space
+- 第4章: namespace
+- 第5章: mount / rootfs / `chroot` / `pivot_root`
+- 第6章: `cgroup` / `cgroup v2`
+- 第7章: capability
+- 第8章: seccomp
+- 第9章: OCI runtime / `runc` / `youki`
+- 第10章: 全体まとめ
+
+## リンク
+
+- [教材トップを見る](/container-internals/)

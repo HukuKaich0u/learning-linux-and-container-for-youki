@@ -27,7 +27,6 @@ const courseSidebar = [
     text: "演習と次の一歩",
     items: [
       { text: "確認問題", link: "/container-internals/questions" },
-      { text: "解答と解説", link: "/container-internals/answers" },
       { text: "ミニプロジェクト", link: "/container-internals/mini-project" },
       { text: "次に読む資料", link: "/container-internals/next-steps" }
     ]

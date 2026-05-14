@@ -2,8 +2,8 @@
 title: ミニプロジェクト
 outline: [2, 3]
 prev:
-  text: "解答と解説"
-  link: /container-internals/answers
+  text: "確認問題"
+  link: /container-internals/questions
 next:
   text: "次に読む資料"
   link: /container-internals/next-steps
